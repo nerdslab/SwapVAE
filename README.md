@@ -13,17 +13,19 @@ Mehdi Azabou , github: mazabou
 If you find the code useful for your research, please consider citing our work:
 
 **placeholder for SwapVAE**
-@misc{xxx,
+
+```@misc{xxx,
       title={Drop, Swap, and Generate: A Self-Supervised Approach for Generating Neural Activity}, 
       author={xxx},
       year={2021},
       eprint={xxx},
       archivePrefix={arXiv}
 }
+```
 
 AND
 
-@misc{azabou2021view,
+```@misc{azabou2021view,
       title={Mine Your Own vieW: Self-Supervised Learning Through Across-Sample Prediction}, 
       author={Mehdi Azabou and Mohammad Gheshlaghi Azar and Ran Liu and Chi-Heng Lin and Erik C. Johnson 
               and Kiran Bhaskaran-Nair and Max Dabagia and Keith B. Hengen and William Gray-Roncal 
@@ -33,3 +35,4 @@ AND
       archivePrefix={arXiv},
       primaryClass={cs.LG}
 }
+```

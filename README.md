@@ -31,7 +31,7 @@ If you find the code useful for your research, please consider citing our work:
 }
 ```
 
-AND MYOW
+AND [myow](https://github.com/nerdslab/myow)
 
 ```
 @misc{azabou2021view,

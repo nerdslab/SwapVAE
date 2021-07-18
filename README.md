@@ -11,21 +11,16 @@ PyTorch implementation of our paper "Drop, Swap, and Generate: A Self-Supervised
 
 - Mehdi Azabou , github: mazabou
 
-## To-dos
 
-- [ ] Add synthetic dataset preprocessing and training scripts
-- [ ] Optimize code formatting
 
 ## Citation
 If you find the code useful for your research, please consider citing our work:
-
-**placeholder for SwapVAE**
 
 ```
 @article{liu2021drop,
   title={Drop, Swap, and Generate},
   author={Liu, Ran and Azabou, Mehdi and  Dabagia, Max and  Lin, Chi-Heng and Azar, Mohammad Gheshlaghi and  Hengen, Keith B and Valko, Michal and Dyer, Eva},
-  journal={arXiv preprint},
+  journal={to be updated soon!},
   year={2021}
 }
 ```

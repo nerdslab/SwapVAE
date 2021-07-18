@@ -22,12 +22,11 @@ If you find the code useful for your research, please consider citing our work:
 **placeholder for SwapVAE**
 
 ```
-@misc{xxx,
-      title={Drop, Swap, and Generate: A Self-Supervised Approach for Generating Neural Activity}, 
-      author={xxx},
-      year={2021},
-      eprint={xxx},
-      archivePrefix={arXiv}
+@article{liu2021drop,
+  title={Drop, Swap, and Generate},
+  author={Liu, Ran and Azabou, Mehdi and  Dabagia, Max and  Lin, Chi-Heng and Azar, Mohammad Gheshlaghi and  Hengen, Keith B and Valko, Michal and Dyer, Eva},
+  journal={arXiv preprint},
+  year={2021}
 }
 ```
 

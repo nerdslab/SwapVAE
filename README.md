@@ -2,7 +2,7 @@
 
 **This page is still in progress.**
 
-PyTorch implementation of our paper "Drop, Swap, and Generate: A Self-Supervised Approach for Generating Neural Activity".
+PyTorch implementation of "Drop, Swap, and Generate: A Self-Supervised Approach for Generating Neural Activity".
 
 
 ## Code contributors

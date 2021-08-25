@@ -18,9 +18,9 @@ If you find the code useful for your research, please consider citing our work:
 
 ```
 @article{liu2021drop,
-  title={Drop, Swap, and Generate},
-  author={Liu, Ran and Azabou, Mehdi and  Dabagia, Max and  Lin, Chi-Heng and Azar, Mohammad Gheshlaghi and  Hengen, Keith B and Valko, Michal and Dyer, Eva},
-  journal={to be updated soon!},
+  title={Drop, Swap, and Generate: A Self-Supervised Approach for Generating Neural Activity},
+  author={Liu, Ran and Azabou, Mehdi and Dabagia, Max and Lin, Chi-Heng and Azar, Mohammad Gheshlaghi and Hengen, Keith B and Valko, Michal and Dyer, Eva L},
+  journal={bioRxiv},
   year={2021}
 }
 ```

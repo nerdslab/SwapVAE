@@ -80,6 +80,13 @@
                         Our method aims to learn latent spaces that can appropriately reveal and disentangle different
                         sources of variability without using labels.
                     </p>
+                    <p class="text">
+                        SwapVAE is loosely inspired by methods used in computer vision that aim to decompose images into their <em>content</em>
+                        and <em>style</em>. To decompose brain states, we consider the execution of movements and their
+                        representation within the the brain. The content in this case may be <em>knowing where to go</em> (target location)
+                        and the style would be the <em>exact execution of the movement</em> (the movement dynamic).
+                        SwapVAE disentangles the neural representation of movement into these components.
+                    </p>
                 </div>
             </div>
             <div class="flex-row">
@@ -98,20 +105,6 @@
                         content space, the content space of the representations of the two augmented views are swapped 
                         before being passed through the decoder. To the right, we show how the behavior of the rhesus macaques movements can be disentangled, 
                         where a reach to a target can be decomposed into the direction of the movement (blue) and its underlying dynamic (yellow).
-                    </p>
-                    <p class="text">
-                        <!--<img class="image image-wrap-text max-width-550" src="img/Fig1_overview.png">-->
-                        <!--We trained a variational autoencoder (VAE) on a collection of
-                        <a target="_blank" href="https://connectivity.brain-map.org/">auto-fluorescence images</a>
-                        from over 1,700 mouse brains at 25 micron resolution. To then tap into the learned factors and
-                        validate the model's expressiveness, we developed a novel bi-directional technique to interpret
-                        the latent space--by making structured perturbations to both, the high-dimensional inputs of
-                        the network, as well as the low-dimensional latent variables in its bottleneck.-->
-                        SwapVAE is loosely inspired by methods used in computer vision that aim to decompose images into their <em>content</em>
-                        and <em>style</em>. To decompose brain states, we consider the execution of movements and their
-                        representation within the the brain. The content in this case may be <em>knowing where to go</em> (target location)
-                        and the style would be the <em>exact execution of the movement</em> (the movement dynamic).
-                        SwapVAE disentangles the neural representation of movement into these components.
                     </p>
                     
                     <h2 class="add-top-margin">Contributions</h2>

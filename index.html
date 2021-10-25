@@ -58,7 +58,7 @@
                         Keith B. Hengen, Michal Valko, and Eva L. Dyer. "Drop, Swap, and Generate: A
                         Self-Supervised Approach for Generating Neural Activity." NeurIPS (2021).
                     </p>
-
+                    
                     <h2 class="add-top-margin">Methods</h2>
                     <hr>
                     <p class="text add-top-margin">
@@ -97,6 +97,18 @@
                         representation within the the brain. The content in this case may be <em>knowing where to go</em> (target location)
                         and the style would be the <em>exact execution of the movement</em> (the movement dynamic).
                         SwapVAE disentangles the neural representation of movement into these components.
+                    </p>
+                    
+                    <h2 class="add-top-margin">Contributions</h2>
+                    <hr>
+                    <p class="text add-top-margin">
+                        - We propose a generative method, SwapVAE, that can both (i) learn a representation of neural activities
+                        that reveal meaningful and interpretable latent factors and (ii) generate realistic neural activities. 
+                        - To further encourage disentanglement, we introduce a novel latent space augmentation called <em>BlockSwap</em>,
+                        where we swap the content variables between two views and ask the network to predict the original view from the content
+                        of a different view.
+                        - We introduce metrics to quantify the disentanglement of our representations of behavior and apply them to neural datasets
+                        from different non-human primates to gain insights into the link between neural activity and behavior. 
                     </p>
 
                 </div>

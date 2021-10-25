@@ -59,14 +59,22 @@
                         Self-Supervised Approach for Generating Neural Activity." NeurIPS (2021).
                     </p>
                     
-                    <h2 class="add-top-margin">Methods</h2>
+                    <h2 class="add-top-margin">Abstract</h2>
                     <hr>
                     <p class="text add-top-margin">
-                        In the brain, the coordinated action of groups of neurons is responsible for
-                        encoding sensory inputs, generating movements, and many things (if not everything) in between.
-                        Understanding what different populations of neurons are doing and how they form
-                        representations of their inputs is a primary goal of neuroscience.
+                        Meaningful and simplified representations of neural activity can yield insights into <em>how</em> and <em>what</em> information 
+                        is being processed within a neural circuit. However, without labels, finding representations that reveal the link between the brain 
+                        and behavior can be challenging. Here, we introduce a novel unsupervised approach for learning disentangled representations of 
+                        neural activity called SwapVAE. Our approach combines a generative modeling framework with an <em>instance-specific alignment</em> 
+                        loss that tries to maximize the representational similarity between transformed views of the input (brain state). These transformed 
+                        (or augmented) views are created by dropping out neurons and jittering samples in time, which intuitively should lead the network to 
+                        a representation that maintains both temporal consistency and invariance to the specific neurons used to represent the neural state. 
+                        Through evaluations on both synthetic data and neural recordings from hundreds of neurons in different primate brains, we show that 
+                        it is possible to build representations that disentangle neural datasets along relevant latent dimensions linked to behavior. 
                     </p>
+                    
+                    <h2 class="add-top-margin">Methods</h2>
+                    <hr>
                     <p class="text add-top-margin">
                         SwapVAE provides a new approach to decompose the latent factors that drive neural population activity.
                         Our method aims to learn latent spaces that can appropriately reveal and disentangle different

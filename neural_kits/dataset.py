@@ -564,32 +564,3 @@ class LocalGlobalGenerator(IterableDataset):
         outputs = {'view1': x1.squeeze(), 'view2': x2.squeeze(),
                    'view3': x3.squeeze(), 'view_pool': x4.squeeze()}
         return outputs
-
-
-
-def test():
-    import sys
-    import numpy
-    import matplotlib.pyplot as plt
-    numpy.set_printoptions(threshold=sys.maxsize)
-
-    path='../data/mihi-chewie'
-
-
-    for primate in ['chewie', 'mihi']:
-        for day in [1, 2]:
-            dataset = ReachNeuralDataset(path, primate, day,
-                         binning_period=0.1, binning_overlap=0.0, train_split=0.8,
-                         scale_firing_rates=False, scale_velocity=False, sort_by_reach=False)
-
-            dataset.train()
-
-            original_data = dataset.original_data
-            original_label = dataset.original_label
-
-            position_raw = dataset.position_raw # 172 (23, 1)
-
-            # dataset._plot_trajectory(position_raw, original_label)
-
-# test()
-

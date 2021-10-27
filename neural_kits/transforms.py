@@ -20,6 +20,7 @@ class Pair_Compose:
             print("manual alert, x1 and x2 are the same")
         return x1, x2
 
+
 class Compose:
     r"""Composes several transforms together.
     Args:
@@ -140,19 +141,6 @@ class Normalize:
         # ?
         return torch.div(x - self.mean.to(x), self.std.to(x))
 
-class Fake_Normalize:
-    r"""Normalization transform.
-    Args:
-        mean (torch.Tensor): Mean.
-        std (torch.Tensor): Standard deviation.
-    """
-    def __init__(self, denom):
-        self.denom = denom
-
-    def __call__(self, x):
-        return x/self.denom
-
-
 
 #### originally
 class Origin_Compose:
@@ -213,12 +201,3 @@ class Origin_Pepper:
         apply_mask = torch.rand(x_list[0].size(0)) < self.apply_p
         random_pepper = random_pepper * apply_mask.view((-1, 1))
         return [x + random_pepper.to(x) for x in x_list]
-
-class Origin_Fake_Normalize:
-    r"""Fake Normalization transform.
-    """
-    def __init__(self, demon = 100):
-        self.demon = demon
-
-    def __call__(self, *x_list):
-        return [torch.div(x, self.demon) for x in x_list]

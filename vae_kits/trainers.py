@@ -1,7 +1,4 @@
 import os
-import time
-
-import matplotlib.pyplot as plt
 
 import torch
 import pytorch_lightning as pl
@@ -11,11 +8,10 @@ import tensorboard as tb
 tf.io.gfile = tb.compat.tensorflow_stub.io.gfile
 
 from neural_kits import neural_tasks
-from vae_kits import classification
 
 class VAE_neural_Learner(pl.LightningModule):
-    def __init__(self, net, train_angular, test_angular, transform,
-                 TB_LOG_NAME, SAVE, LR, l_size=20,
+    def __init__(self, net, train_angular, test_angular,
+                 TB_LOG_NAME, SAVE, LR, l_size=20, transform=None,
                  train_mm=None, test_mm=None):
         super().__init__()
         self.net = net
@@ -85,7 +81,7 @@ class swap_VAE_neural_Learner(VAE_neural_Learner):
         self.beta = beta
         self.acc_best = 0
         self.delta_acc_best = 0
-        self.normal_data = True
+        self.normal_data = False
         self.check_clf = check_clf
 
     def forward(self, img, force_val=False):
@@ -98,9 +94,6 @@ class swap_VAE_neural_Learner(VAE_neural_Learner):
         else:
             assert self.normal_data is False
             img1, img2 = img[0], img[1]
-            if self.transform is not None:
-                img1 = self.transform(img1)
-                img2 = self.transform(img2)
 
         return self.net(img1, img2)
 

@@ -1,8 +1,6 @@
 # SwapVAE
 
-**This page is still in progress.**
-
-PyTorch implementation of "[Drop, Swap, and Generate: A Self-Supervised Approach for Generating Neural Activity](https://www.biorxiv.org/content/10.1101/2021.07.21.453285v1.abstract)".
+PyTorch implementation of "[Drop, Swap, and Generate: A Self-Supervised Approach for Generating Neural Activity](https://www.biorxiv.org/content/10.1101/2021.07.21.453285v1.abstract)" (**NeurIPS 2021 oral**).
 
 
 ## Code contributors

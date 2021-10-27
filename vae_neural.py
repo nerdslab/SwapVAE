@@ -61,7 +61,7 @@ flags.DEFINE_integer('ablation_type', 0, 'ablation experiment type, 0 is swap de
 
 # Training parameters
 flags.DEFINE_float('lr', 5e-4, 'Base learning rate.')
-flags.DEFINE_integer('num_epochs', 200, 'Number of training epochs.')
+flags.DEFINE_integer('num_epochs', 400, 'Number of training epochs.')
 flags.DEFINE_integer('check_clf', 5, 'How many epochs to check clf performance.')
 
 # Random seed
@@ -87,7 +87,6 @@ def main_swap(argv):
 
     transform_temp = transforms.Pair_Compose(
         transforms.RandomizedDropout(FLAGS.dropout_p, apply_p=FLAGS.dropout_apply_p),
-        transforms.Pepper(FLAGS.pepper_p, FLAGS.pepper_sigma, apply_p=FLAGS.pepper_apply_p),
     )
 
     train_data = spatial_only_neural(dataset, transform=None, target_transform=None, train='train')
@@ -185,15 +184,13 @@ def main_swap(argv):
 
         transform_temp = transforms.Origin_Compose(
             transforms.Origin_RandomizedDropout(FLAGS.dropout_p, apply_p=FLAGS.dropout_apply_p),
-            transforms.Origin_Pepper(FLAGS.pepper_p, FLAGS.pepper_sigma, apply_p=FLAGS.pepper_apply_p),
         )
 
         pair_sets = utils.onlywithin_indices(sequence_lengths, k_min=-5, k_max=5)
         generator = LocalGlobalGenerator(firing_rates, pair_sets, sequence_lengths,
                                          num_examples=firing_rates.shape[0],
                                          batch_size=FLAGS.batch_size,
-                                         pool_batch_size=0,
-                                         transform=transform_temp, num_workers=FLAGS.num_workers,
+                                         pool_batch_size=0, num_workers=FLAGS.num_workers,
                                          structured_transform=True)
         train_data = DataLoader(generator, num_workers=FLAGS.num_workers, drop_last=True)
 

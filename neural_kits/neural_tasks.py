@@ -69,6 +69,9 @@ def train_angle_classifier(net, classifier, data_train, data_val, optimizer, tra
     acc = MetricLogger()
     delta_acc = MetricLogger()
 
+    best_acc = 0.
+    best_delta_acc = 0.
+
     for epoch in tqdm(range(num_epochs), disable=True):
         classifier.train()
         for x, _, label, _ in batch_iter(*data_train, batch_size=batch_size):
@@ -100,6 +103,11 @@ def train_angle_classifier(net, classifier, data_train, data_val, optimizer, tra
         acc_test, delta_acc_test = compute_angle_accuracy(net, classifier, data_val, transform=transform_val,
                                                           device=device)
 
+        if acc_test > best_acc:
+            best_acc = acc_test
+        if delta_acc_test > best_delta_acc:
+            best_delta_acc = delta_acc_test
+
         acc.update(acc_train, acc_test, step=epoch)
         delta_acc.update(delta_acc_train, delta_acc_test, step=epoch)
-    return acc, delta_acc
+    return acc, delta_acc, {"best_acc": best_acc, "best_delta_acc": best_delta_acc}

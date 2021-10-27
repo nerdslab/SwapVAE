@@ -139,10 +139,10 @@ class swap_VAE_neural_Learner(VAE_neural_Learner):
             classifier = torch.nn.Sequential(torch.nn.Linear(self.l_size, 2)).to('cuda')
             class_optimizer = torch.optim.Adam(classifier.parameters(), lr=0.01, weight_decay=1e-5)
 
-            acc, delta_acc = neural_tasks.train_angle_classifier(
+            acc, delta_acc, add = neural_tasks.train_angle_classifier(
                 self.net._representation, classifier, self.train_angular, self.test_angular, class_optimizer,
                 transform=None, transform_val=None, device='cuda',
-                num_epochs=100, batch_size=256)
+                num_epochs=300, batch_size=256)
 
             if acc.val_smooth > self.acc_best:
                 self.acc_best = acc.val_smooth
@@ -152,7 +152,9 @@ class swap_VAE_neural_Learner(VAE_neural_Learner):
             self.logger.log_metrics({'trial_angles/acc_train': acc.train_smooth,
                                      'trial_angles/delta_acc_train': delta_acc.train_smooth,
                                      'trial_angles/acc_test': acc.val_smooth,
-                                     'trial_angles/delta_acc_test': delta_acc.val_smooth}, step=self.current_epoch)
+                                     'trial_angles/delta_acc_test': delta_acc.val_smooth,
+                                     'trial_angles/best_acc': add["best_acc"],
+                                     'trial_angles/best_delta_acc': add["best_delta_acc"],}, step=self.current_epoch)
 
         # save the network
         if (self.current_epoch + 1) % self.SAVE == 0:

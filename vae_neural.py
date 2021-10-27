@@ -61,7 +61,7 @@ flags.DEFINE_integer('ablation_type', 0, 'ablation experiment type, 0 is swap de
 
 # Training parameters
 flags.DEFINE_float('lr', 5e-4, 'Base learning rate.')
-flags.DEFINE_integer('num_epochs', 400, 'Number of training epochs.')
+flags.DEFINE_integer('num_epochs', 225, 'Number of training epochs.')
 flags.DEFINE_integer('check_clf', 5, 'How many epochs to check clf performance.')
 
 # Random seed

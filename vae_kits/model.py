@@ -36,10 +36,10 @@ def kaiming_init(m):
 # loss functions
 def reconstruction_loss(x, x_recon, distribution='gaussian'):
     
-    batch_size = x.size(0) # [256 B, 163]
+    batch_size = x.size(0)  # [256 B, 163]
     assert batch_size != 0
 
-    if distribution == 'bernoulli': #
+    if distribution == 'bernoulli':
         recon_loss = F.binary_cross_entropy_with_logits(x_recon, x, reduction='sum').div(batch_size)
     elif distribution == 'weighted_bernoulli':
          weight = torch.tensor([0.1, 0.9]).to("cuda") # just a label here
@@ -47,19 +47,21 @@ def reconstruction_loss(x, x_recon, distribution='gaussian'):
          weight_[x <= 0.5] = weight[0]
          weight_[x > 0.5] = weight[1]
          recon_loss = F.binary_cross_entropy_with_logits(x_recon, x, reduction='none')
-         # print(recon_loss.shape) # torch.Size([256, 163])
          recon_loss = torch.sum(weight_ * recon_loss).div(batch_size)
-
     elif distribution == 'gaussian':
         x_recon = F.sigmoid(x_recon)
         recon_loss = F.mse_loss(x_recon, x, size_average=False).div(batch_size)
     elif distribution == 'poisson':
         # print((x - x_recon * torch.log(x)).shape)
-        #print(x_recon)
         x_recon.clamp(min=1e-7, max=1e7)
         recon_loss = torch.sum(x_recon - x * torch.log(x_recon)).div(batch_size)
+    elif distribution == 'poisson2':
+        # layer = nn.Softplus()
+        # x_recon = layer(x_recon)
+        x_recon = x_recon + 1e-7
+        recon_loss = torch.sum(x_recon - x * torch.log(x_recon)).div(batch_size)
     else:
-        recon_loss = None
+        raise NotImplementedError
 
     return recon_loss
 
@@ -78,12 +80,11 @@ def kl_divergence(mu, logvar):
 
     return total_kld, dimension_wise_kld, mean_kld
 
+
 # model
 class VAE_neural(nn.Module):
     """linear VAE developed to train neural dataset."""
-
     input_size = 163
-
     def __init__(self, l_dim=20, hidden_dim = [163, 128], batchnorm=False): # nc actually indicate if it is RGB image
         super(VAE_neural, self).__init__()
 
@@ -124,7 +125,6 @@ class VAE_neural(nn.Module):
         z = reparametrize(mu, logvar)
 
         x_recon = (self._decode(z).view(x.size()))
-
         recon_loss = reconstruction_loss(x, x_recon, distribution='bernoulli')
         kl_loss, _, _ = kl_divergence(mu, logvar)
 
@@ -145,7 +145,6 @@ class swapVAE_neural(nn.Module):
     """ swap VAE developed to train neural dataset.
         part of the latent representation is used for clustering, the rest is used to VAE
     """
-
     def __init__(self, s_dim=64, l_dim=128, input_size=163, hidden_dim = [163, 128], batchnorm=True):
         super(swapVAE_neural, self).__init__()
 

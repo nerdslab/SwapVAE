@@ -141,8 +141,7 @@ class swap_VAE_neural_Learner(VAE_neural_Learner):
 
             acc, delta_acc, add = neural_tasks.train_angle_classifier(
                 self.net._representation, classifier, self.train_angular, self.test_angular, class_optimizer,
-                transform=None, transform_val=None, device='cuda',
-                num_epochs=300, batch_size=256)
+                transform=None, transform_val=None, device='cuda', num_epochs=300, batch_size=256)
 
             if acc.val_smooth > self.acc_best:
                 self.acc_best = acc.val_smooth
